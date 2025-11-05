@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Snake — React + TypeScript + Vite
 
-Currently, two official plugins are available:
+A small, playable Snake game built with React, TypeScript and Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This repository contains a simple implementation of the classic Snake game with keyboard controls, a speed slider, and an adaptive grid board.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Playable Snake game with WASD / arrow key controls and space to pause.
+- Score counter and increasing difficulty (speed increases when eating food).
+- UI controls for Start / Pause / Reset and a speed slider.
+- Implemented with React + TypeScript and bundled with Vite.
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- ESLint (dev)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Prerequisites: Node.js (recommend v18 or later) and npm.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Install dependencies
+
+```powershell
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Start the dev server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm run dev
 ```
+
+3. Open the app
+
+Open http://localhost:5173 (Vite will print the exact URL in the terminal).
+
+Build for production
+
+```powershell
+npm run build
+```
+
+Preview the production build locally
+
+```powershell
+npm run preview
+```
+
+Lint the code
+
+```powershell
+npm run lint
+```
+
+## Controls & gameplay
+
+- Move: Arrow keys or WASD
+- Pause / Resume: Space
+- Buttons: Start, Pause, Reset
+- Speed: use the slider to change the tick interval (lower = faster)
+
+Objective: eat the food (red cell) to grow the snake and increase your score. Avoid colliding with the walls or the snake's body.
+
+## Project structure
+
+- `src/components/SnakeGame.tsx` — main game component (board, game loop, state, controls).
+- `src/App.tsx` — application entry that renders the game.
+- `src/index.css`, `src/App.css`, `src/components/SnakeGame.css` — styles for layout and the game board.
+- `package.json` — scripts and dependencies.
+
+## Notes for contributors
+
+- Follow the existing TypeScript and React style in the repo.
+- Add tests or simple integration checks as small, focused PRs.
+
+If you'd like, I can add a small test harness or a GitHub Actions workflow to run linting on PRs.
+
+## License
+
+No license is specified in this repository. If you want to open-source this project, consider adding a `LICENSE` file (for example, MIT).
+
+## Try it (quick)
+
+```powershell
+npm install
+npm run dev
+```
+
+---
+
+If you want any additions (README screenshot, license, CI, or a short playable demo build uploaded), tell me which and I’ll add it.
